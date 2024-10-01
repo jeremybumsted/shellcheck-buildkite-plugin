@@ -9,6 +9,7 @@ SHELLCHECK_BASE_PATH="shellcheck"
 # BUILDKITE_PULL_REQUEST_REPO can be used to capture the URL of the fork
 # so that the agent running "selftest" can get the correct commit.
 if [ "${BUILDKITE_PULL_REQUEST}" != "false" ]; then
+    echo "This should be the repo: ${BUILDKITE_PULL_REQUEST_REPO}"
     SHELLCHECK_BASE_PATH="https://${BUILDKITE_PULL_REQUEST_REPO}"
 fi
 
