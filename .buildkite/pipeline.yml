@@ -23,7 +23,7 @@ steps:
             - buildkite/*.sh
     if: build.pull_request.repository.fork == true
 
-  - label: selftest
+  - label: selftest - non fork
     plugins:
       - shellcheck#${BUILDKITE_COMMIT}:
           files:
