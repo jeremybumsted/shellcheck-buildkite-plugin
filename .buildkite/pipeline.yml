@@ -15,9 +15,19 @@ steps:
       - plugin-linter#v3.3.0:
           id: shellcheck
 
-  - label: selftest
+  - label: selftest - fork
+    plugins:
+      - ${BUILDKITE_PULL_REQUEST_REPO}#${BUILDKITE_COMMIT}:
+          files:
+            - hooks/*
+            - buildkite/*.sh
+    if: build.pull_request.repository.fork == true
+
+  - label: selftest - non fork
     plugins:
       - shellcheck#${BUILDKITE_COMMIT}:
           files:
             - hooks/*
             - buildkite/*.sh
+    if: build.pull_request.repository.fork == false
+    
